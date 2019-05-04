@@ -1,0 +1,87 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F628A ]
+[d frameptr 6 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"26 C:\Users\Gonzalo\MPLABXProjects\ejemplo005.X\main.c
+[v _mostrar mostrar `(v  1 e 1 0 ]
+"42
+[v _main main `(v  1 e 1 0 ]
+[s S22 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"183 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\include\pic16f628a.h
+[u S31 . 1 `S22 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES31  1 e 1 @5 ]
+"228
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"907
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"969
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"6 C:\Users\Gonzalo\MPLABXProjects\ejemplo005.X\main.c
+[v _digitos digitos `DC[16]uc  1 e 16 0 ]
+"42
+[v _main main `(v  1 e 1 0 ]
+{
+"47
+[v main@i i `i  1 a 2 3 ]
+"45
+[v main@contador contador `uc  1 a 1 5 ]
+"56
+} 0
+"26
+[v _mostrar mostrar `(v  1 e 1 0 ]
+{
+[v mostrar@conta conta `uc  1 a 1 wreg ]
+"28
+[v mostrar@decenas decenas `uc  1 a 1 1 ]
+"27
+[v mostrar@unidades unidades `uc  1 a 1 0 ]
+"26
+[v mostrar@conta conta `uc  1 a 1 wreg ]
+[v mostrar@conta conta `uc  1 a 1 2 ]
+"40
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 6 ]
+[v ___awmod@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.05\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
