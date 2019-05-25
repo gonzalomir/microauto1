@@ -1330,7 +1330,6 @@ extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.05\\pic\\include\\xc.h" 2 3
 # 7 "main.c" 2
 
-
 # 1 "./lcd.h" 1
 # 17 "./lcd.h"
 typedef struct {
@@ -1361,8 +1360,41 @@ void LCD_Write ( unsigned char c );
 
 
 void LCD_Out ( char a );
-# 9 "main.c" 2
+# 8 "main.c" 2
 
+
+__bit old2, new2;
+__bit old3, new3;
+
+void mostrarNum(uint8_t fil, uint8_t col, int num) {
+    char aux[4];
+    int aux2;
+    do { if ( fil == 0 ) { do { LCD_Write( (0x80 + col - 4 & 0xF0) >> 4 ); LCD_Write( 0x80 + col - 4 & 0x0F); } while ( 0 ); } else if ( fil == 1 ) { do { LCD_Write( (0xC0 + col - 4 & 0xF0) >> 4 ); LCD_Write( 0xC0 + col - 4 & 0x0F); } while ( 0 ); } else if ( fil == 2 ) { do { LCD_Write( (0x94 + col - 4 & 0xF0) >> 4 ); LCD_Write( 0x94 + col - 4 & 0x0F); } while ( 0 ); } else if ( fil == 3 ) { do { LCD_Write( (0xD4 + col - 4 & 0xF0) >> 4 ); LCD_Write( 0xD4 + col - 4 & 0x0F); } while ( 0 ); } } while ( 0 );
+    LCD_putrs("     ");
+    itoa(aux, num, 10);
+    if (num > 9) {
+        aux2 = numCifras(num) - 1;
+        col = col - aux2;
+    }
+    if(num < 0){
+        aux2 = numCifras(num);
+        col = col - aux2;
+    }
+    do { if ( fil == 0 ) { do { LCD_Write( (0x80 + col & 0xF0) >> 4 ); LCD_Write( 0x80 + col & 0x0F); } while ( 0 ); } else if ( fil == 1 ) { do { LCD_Write( (0xC0 + col & 0xF0) >> 4 ); LCD_Write( 0xC0 + col & 0x0F); } while ( 0 ); } else if ( fil == 2 ) { do { LCD_Write( (0x94 + col & 0xF0) >> 4 ); LCD_Write( 0x94 + col & 0x0F); } while ( 0 ); } else if ( fil == 3 ) { do { LCD_Write( (0xD4 + col & 0xF0) >> 4 ); LCD_Write( 0xD4 + col & 0x0F); } while ( 0 ); } } while ( 0 );
+    LCD_puts(aux);
+
+    return;
+}
+
+int numCifras(int num) {
+    int contador = 1;
+    while (num / 10 > 0) {
+
+        num = num / 10;
+        contador++;
+    }
+    return contador;
+}
 
 void main(void) {
     LCD lcd = {&PORTB, 2, 3, 4, 5, 6, 7};
@@ -1371,31 +1403,22 @@ void main(void) {
     OPTION_REGbits.nRBPU = 0;
     do { LCD_Write( (0x01 & 0xF0) >> 4 ); LCD_Write( 0x01 & 0x0F); } while ( 0 );
     do { if ( 0 == 0 ) { do { LCD_Write( (0x80 + 0 & 0xF0) >> 4 ); LCD_Write( 0x80 + 0 & 0x0F); } while ( 0 ); } else if ( 0 == 1 ) { do { LCD_Write( (0xC0 + 0 & 0xF0) >> 4 ); LCD_Write( 0xC0 + 0 & 0x0F); } while ( 0 ); } else if ( 0 == 2 ) { do { LCD_Write( (0x94 + 0 & 0xF0) >> 4 ); LCD_Write( 0x94 + 0 & 0x0F); } while ( 0 ); } else if ( 0 == 3 ) { do { LCD_Write( (0xD4 + 0 & 0xF0) >> 4 ); LCD_Write( 0xD4 + 0 & 0x0F); } while ( 0 ); } } while ( 0 );
-    LCD_putrs("Int a String");
-    int a = 1;
-    float b = 0.5;
-    char aux[3];
-
-    char rxbuffer[20];
-    int status;
-    char *text;
-    float value;
-    value = 123.456;
-
-
+    LCD_putrs("Contador 0 a 100");
+    int a = 0;
 
     for (;;) {
-        do { if ( 1 == 0 ) { do { LCD_Write( (0x80 + 0 & 0xF0) >> 4 ); LCD_Write( 0x80 + 0 & 0x0F); } while ( 0 ); } else if ( 1 == 1 ) { do { LCD_Write( (0xC0 + 0 & 0xF0) >> 4 ); LCD_Write( 0xC0 + 0 & 0x0F); } while ( 0 ); } else if ( 1 == 2 ) { do { LCD_Write( (0x94 + 0 & 0xF0) >> 4 ); LCD_Write( 0x94 + 0 & 0x0F); } while ( 0 ); } else if ( 1 == 3 ) { do { LCD_Write( (0xD4 + 0 & 0xF0) >> 4 ); LCD_Write( 0xD4 + 0 & 0x0F); } while ( 0 ); } } while ( 0 );
-        itoa(aux, a, 10);
-        LCD_puts(aux);
-        a++;
-
-        do { if ( 1 == 0 ) { do { LCD_Write( (0x80 + 5 & 0xF0) >> 4 ); LCD_Write( 0x80 + 5 & 0x0F); } while ( 0 ); } else if ( 1 == 1 ) { do { LCD_Write( (0xC0 + 5 & 0xF0) >> 4 ); LCD_Write( 0xC0 + 5 & 0x0F); } while ( 0 ); } else if ( 1 == 2 ) { do { LCD_Write( (0x94 + 5 & 0xF0) >> 4 ); LCD_Write( 0x94 + 5 & 0x0F); } while ( 0 ); } else if ( 1 == 3 ) { do { LCD_Write( (0xD4 + 5 & 0xF0) >> 4 ); LCD_Write( 0xD4 + 5 & 0x0F); } while ( 0 ); } } while ( 0 );
-        text = ftoa(value, &status);
-        LCD_puts(text);
-
-        _delay((unsigned long)((250)*(4000000/4000.0)));
-
+        new2 = PORTBbits.RB0;
+        new3 = PORTBbits.RB1;
+        if (old2 && !new2) {
+            a++;
+            mostrarNum(1, 10, a);
+        }
+        if (old3 && !new3) {
+            a--;
+            mostrarNum(1, 10, a);
+        }
+        old2 = new2;
+        old3 = new3;
     }
     return;
 }
